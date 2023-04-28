@@ -25,3 +25,7 @@ def search_student(request):
     else:
         return render(request, 'search_student.html', 
         {})
+def all_students(request):
+    return render(request, 'all_students.html', {
+        'students': Student.objects.all()
+    })

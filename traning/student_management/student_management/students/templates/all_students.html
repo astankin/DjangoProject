@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block body %}
-  {% if searched %}
+  {% if students %}
+  {% comment %} Card {% endcomment %}
   <div class="card bg-light ms-4 me-4 mb-4 mt-4" >
     <div class="card-header">
-        <i class="fa-solid fa-user fa-lg"></i> Student Record
+      <i class="fa-solid fa-list fa-lg"></i> Student Record
     </div>
     <div class="card-body">
       <p class="card-text">
@@ -43,6 +44,6 @@
     </div>
   </div>
   {% else %}
-  <h5 class="alert alert-primary ms-4 me-4">Please fill up the search field!</h5>
+  <h5 class="alert alert-primary ms-4 me-4">No Student Records</h5>
   {% endif %}
 {% endblock %}
