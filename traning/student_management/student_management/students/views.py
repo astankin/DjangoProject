@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 from .forms import StudentForm
 from .models import Student
 
@@ -83,3 +85,10 @@ def edit(request, id):
     return render(request, 'edit.html', {
         'form': form
     })
+
+
+def delete(request, id):
+    if request.method == 'POST':
+        student = Student.objects.get(pk=id)
+        student.delete()
+    return HttpResponseRedirect(reverse('index'))
