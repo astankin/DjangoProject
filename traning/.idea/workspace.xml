@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af01500f-293d-4061-af8e-e8cf2f5d65c8" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student_management/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/student_management/db.sqlite3" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/student_management/student_management/students/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student_management/student_management/students/views.py" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +62,11 @@
       <workItem from="1682682623484" duration="17000" />
       <workItem from="1682704477819" duration="351000" />
       <workItem from="1682704949456" duration="248000" />
+<<<<<<< Updated upstream
       <workItem from="1682705721204" duration="16862000" />
+=======
+      <workItem from="1682705721204" duration="16602000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
