@@ -64,9 +64,8 @@ def add(request):
             })
     else:
         form = StudentForm()
-        return render(request, 'add.html', {
-            'form': StudentForm()
-        })
+    context = {'form': form}
+    return render(request, 'add.html', context=context)
 
 
 def edit(request, id):
