@@ -65,6 +65,8 @@ def add(request):
     else:
         form = StudentForm()
     context = {'form': form}
+
+    
     return render(request, 'add.html', context=context)
 
 
