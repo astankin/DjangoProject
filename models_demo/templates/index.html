@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="display: flex; justify-content: space-around">
+    {% for employee in employees %}
+    <ul>
+    <li style="list-style: none"><h2>{{ employee.first_name }} {{ employee.last_name }}</h2></li>
+        <ol>
+           <h3>Projects</h3>
+            {% for project in employee.projects.all %}
+                <li>{{ project.name }}</li>
+            {% endfor %}
+        </ol>
+    </ul>
+{% endfor %}
+</div>
+</body>
+</html>
