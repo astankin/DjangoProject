@@ -3,19 +3,30 @@ from django.db import models
 
 # Create your models here.
 
-class Departments(models.Model):
-    DEPARTMENTS = [
-        ('Engineering', 'Engineering'),
-        ('Purchasing', 'Purchasing'),
-        ('Quality', 'Quality'),
-    ]
+class Department(models.Model):
+    # DEPARTMENTS = [
+    #     ('Engineering', 'Engineering'),
+    #     ('Purchasing', 'Purchasing'),
+    #     ('Quality', 'Quality'),
+    # ]
     name = models.CharField(
         max_length=20,
-        choices=DEPARTMENTS,
+        # choices=DEPARTMENTS,
     )
 
     def __str__(self):
-        return f'Dep: {self.name}, id: {self.id}'
+        return f'{self.name}'
+
+
+class Project(models.Model):
+    name = models.CharField(max_length=30)
+    dead_line = models.DateField(
+        null=True,
+        blank=True,
+    )
+
+    def __str__(self):
+        return f'{self.name}'
 
 
 class Employee(models.Model):
@@ -31,21 +42,13 @@ class Employee(models.Model):
         max_length=50,
     )
 
-    departments = models.ForeignKey(
-        Departments,
+    department = models.ForeignKey(
+        Department,
         on_delete=models.CASCADE,
+    )
+    projects = models.ManyToManyField(
+        Project
     )
 
     def __str__(self):
-        return f'{self.first_name} {self.middle_name} {self.last_name} - id: {self.id}'
-
-
-class Project(models.Model):
-    name = models.CharField(max_length=30)
-    dead_line = models.DateField(
-        null=True,
-        blank=True,
-    )
-    employees = models.ManyToManyField(
-        to=Employee
-    )
+        return f'{self.first_name} {self.middle_name} {self.last_name} - Dep: {self.department}'
