@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a class="fcc-btn" href="{% url 'show-all-employees' %}">
+    <button>All Employees</button>
+</a>
+<a class="fcc-btn" href="{% url 'index' %}">
+    <button>Back</button>
+</a>
+<a class="fcc-btn" href="{% url 'add-employee' %}">
+    <button>Add Employee</button>
+</a>
+{% block content %}
+{% endblock %}
+</body>
+</html>
