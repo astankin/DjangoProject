@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            The employee deleted successfully.
+            <a href="{% url 'index' %}" class="alert-link">Go to Home Page.</a>
+        </div>
+    {% else %}
+        <h1>Are you sure you want to delete the Employee: {{ employee.first_name }} {{ employee.last_name }}</h1>
+        <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Delete</button>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+    {% endif %}
+{% endblock %}

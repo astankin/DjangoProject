@@ -64,9 +64,8 @@ def add(request):
             })
     else:
         form = StudentForm()
-        return render(request, 'add.html', {
-            'form': StudentForm()
-        })
+    context = {'form': form}
+    return render(request, 'add.html', context=context)
 
 
 def edit(request, id):
@@ -88,7 +87,14 @@ def edit(request, id):
 
 
 def delete(request, id):
+    student = Student.objects.get(pk=id)
     if request.method == 'POST':
-        student = Student.objects.get(pk=id)
         student.delete()
-    return HttpResponseRedirect(reverse('index'))
+        return render(request, 'delete.html', {
+            'student': student,
+            'success': True
+        })
+    else:
+        return render(request, 'delete.html', {
+            'student': student
+        })

@@ -4,6 +4,12 @@
     {% if employees %}
         {% for employee in employees %}
             <h2>{{ employee.first_name }} {{ employee.last_name }}</h2>
+            <a href="{% url 'edit-employee' employee.id %}">
+                <button>Edit</button>
+            </a>
+            <a href="{% url 'delete' employee.id %}">
+                <button>Delete</button>
+            </a>
             <ul>
                 <li>Department: {{ employee.department }}</li>
                 <li>Projects:

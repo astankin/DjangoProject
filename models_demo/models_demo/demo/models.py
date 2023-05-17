@@ -3,8 +3,14 @@ from django.db import models
 
 # Create your models here.
 class Department(models.Model):
+    DEPARTMENTS = [
+        ('Engineering', 'Engineering'),
+        ('Purchasing', 'Purchasing'),
+        ('Quality', 'Quality'),
+    ]
     name = models.CharField(
-        max_length=30,
+        max_length=20,
+        choices=DEPARTMENTS,
     )
 
     def __str__(self):
@@ -38,3 +44,5 @@ class Employee(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+

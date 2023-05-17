@@ -4,7 +4,11 @@
     <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredIdentifiers">
         <list>
+<<<<<<< HEAD
           <option value="property.setter" />
+=======
+          <option value="website.main.models.Post.objects" />
+>>>>>>> c8f7bc0f19fc3bc104478e1b610a29289303f572
         </list>
       </option>
     </inspection_tool>
