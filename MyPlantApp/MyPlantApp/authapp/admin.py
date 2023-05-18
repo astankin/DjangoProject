@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from MyPlantApp.authapp.models import Profile
+from MyPlantApp.authapp.models import ProfileModel
 
 
 # Register your models here.
 
-@admin.register(Profile)
+@admin.register(ProfileModel)
 class UserAdmin(admin.ModelAdmin):
     pass

@@ -11,15 +11,23 @@ TYPES = [
 ]
 
 
-class Plant(models.Model):
+class PlantModel(models.Model):
     plant_type = models.CharField(
         max_length=14,
         choices=TYPES,
+        verbose_name="Type:"
     )
     name = models.CharField(
         max_length=20,
-        validators=[MinLengthValidator(2), plant_name_validator]
+        validators=[MinLengthValidator(2), plant_name_validator],
+        verbose_name="Name:"
     )
-    image = models.URLField()
-    description = models.TextField()
-    price = models.FloatField()
+    image = models.URLField(
+        verbose_name="Image Url:"
+    )
+    description = models.TextField(
+        verbose_name="Description:"
+    )
+    price = models.FloatField(
+        verbose_name="Price:"
+    )
