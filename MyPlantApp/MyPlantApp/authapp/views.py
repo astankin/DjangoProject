@@ -33,21 +33,27 @@ def profile_details(request):
 
 def edit_profile(request):
     profile = ProfileModel.objects.first()
-    if request.method == "GET":
-        context = {'form': EditProfileForm(instance=profile)}
-        return render(request, 'edit-profile.html', context)
-    else:
+    if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=profile)
-
+        context = {
+            'form': form
+        }
         if form.is_valid():
             form.save()
-
-            return redirect('profile-details-page')
-        else:
-            context = {'form': form}
-
-            return render(request, 'edit-profile.html', context)
+            return redirect('profile-details')
+    else:
+        form = EditProfileForm(instance=profile)
+        context = {
+            'form': form
+        }
+    return render(request, 'edit-profile.html', context)
 
 
 def delete_profile(request):
+    profile = ProfileModel.objects.first()
+    plants = PlantModel.objects.all()
+    if request.method == 'POST':
+        profile.delete()
+        plants.delete()
+        return redirect('home-page')
     return render(request, 'delete-profile.html')

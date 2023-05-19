@@ -12,7 +12,10 @@ class ProfileForm(forms.ModelForm):
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = ProfileModel
-        fields = ['username', 'first_name', 'last_name', 'profile_picture']
+        fields = '__all__'
+        labels = {
+            'last_name': 'Second Name'
+        }
 
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)

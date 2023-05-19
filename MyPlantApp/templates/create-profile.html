@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style/style.css">
-    <title>MyPlantApp</title>
-</head>
-
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <div id="box">
     <header>
 
@@ -26,25 +17,9 @@
                 <h1>Create Profile</h1>
                 {% csrf_token %}
                 {{ form }}
-{#                <label for="username">Username:</label>#}
-{#                <input type="text" name="username" maxlength="4" required="" id="username">#}
-{##}
-{#                <label for="first_name">First Name:</label>#}
-{#                <input type="text" name="first_name" maxlength="20" required="" id="first_name">#}
-{##}
-{#                <label for="last_name">Last Name:</label>#}
-{#                <input type="text" name="last_name" maxlength="20" required="" id="last_name">#}
-
                 <input class="btn submit" type="submit" value="Create Profile">
             </div>
         </form>
     </section>
-
-    <!-- footer -->
-    <footer>
-        &copy;SoftUni Team 2022. All rights reserved.
-    </footer>
-
 </div>
-</body>
-</html>
+{% endblock %}

@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'style/style.css' %}">
-    <title>MyPlantApp</title>
-</head>
-
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <div id="box">
 
     <header>
-        <!-- Navigation Bar -->
-        <h1><a class="index-navigation" href="{% url 'home-page' %}">MyPlants</a></h1>
-        <nav>
-            <a href="{% url 'catalogue' %}">Catalogue</a>
-            <a href="{% url 'create-plant' %}">Create Plant</a>
-            <a href="{% url 'profile-details' %}">Profile</a>
-        </nav>
+       {% include 'partials/navbar.html' %}
     </header>
 
     <!-- create plant form -->
@@ -36,11 +21,4 @@
         </form>
     </section>
 </div>
-<!-- Footer -->
-<footer>
-    &copy;SoftUni Team 2022. All rights reserved.
-</footer>
-<!-- End Footer -->
-
-</body>
-</html>
+{% endblock %}
