@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 
 from MyPlantApp.authapp.models import ProfileModel
-from MyPlantApp.my_plant_app import models
 from MyPlantApp.my_plant_app.forms import PlantForm, DeletePlantForm
 from MyPlantApp.my_plant_app.models import PlantModel
 
@@ -16,8 +15,10 @@ def home_page(request):
 
 
 def show_catalogue(request):
-    plants = models.PlantModel.objects.all()
-    context = {'plants': plants}
+    plants = PlantModel.objects.all()
+    context = {
+        'plants': plants
+    }
     return render(request, 'catalogue.html', context)
 
 
@@ -35,8 +36,8 @@ def create_plant(request):
     return render(request, 'create-plant.html', context)
 
 
-def plant_details(request, id):
-    plant = PlantModel.objects.get(id=id)
+def plant_details(request, plant_id):
+    plant = PlantModel.objects.get(id=plant_id)
     context = {
         'plant': plant
     }
