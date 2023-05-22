@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-
 from MyPlantApp.authapp.models import ProfileModel
 from MyPlantApp.my_plant_app.forms import PlantForm, DeletePlantForm
 from MyPlantApp.my_plant_app.models import PlantModel
@@ -36,8 +35,8 @@ def create_plant(request):
     return render(request, 'create-plant.html', context)
 
 
-def plant_details(request, plant_id):
-    plant = PlantModel.objects.get(id=plant_id)
+def plant_details(request, id):
+    plant = PlantModel.objects.get(id=id)
     context = {
         'plant': plant
     }
@@ -47,18 +46,29 @@ def plant_details(request, plant_id):
 def edit_plant(request, id):
     plant = PlantModel.objects.get(id=id)
 
-    if request.method == 'POST':
+    # if request.method == 'POST':
+    #     form = PlantForm(request.POST, instance=plant)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('catalogue')
+    #     else:
+    #         context = {'form': form}
+    #         return render(request, 'edit-plant.html', context)
+    # else:
+    #     form = PlantForm(instance=plant)
+    #     context = {'form': form}
+    #     return render(request, 'edit-plant.html', context)
+    if request.method == 'GET':
+        form = PlantForm(instance=plant)
+    else:
         form = PlantForm(request.POST, instance=plant)
         if form.is_valid():
             form.save()
             return redirect('catalogue')
-        else:
-            context = {'form': form}
-            return render(request, 'edit-plant.html', context)
-    else:
-        form = PlantForm(instance=plant)
-        context = {'form': form}
-        return render(request, 'edit-plant.html', context)
+    context = {
+        'form': form
+    }
+    return render(request, 'edit-plant.html', context)
 
 
 def delete_plant(request, id):
