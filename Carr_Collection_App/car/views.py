@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from car.forms import CarForm
+from car.forms import CarCreateForm, CarDeleteForm
 from car.models import CarModel
 from user_app.models import ProfileModel
 
@@ -19,12 +19,12 @@ def catalogue_page(request):
 
 def car_create(request):
     if request.method == 'POST':
-        form = CarForm(request.POST)
+        form = CarCreateForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('catalogue')
     else:
-        form = CarForm()
+        form = CarCreateForm()
     context = {
         'form': form,
         'profile': ProfileModel.objects.first()
@@ -44,7 +44,7 @@ def car_details(request, id):
 def car_edit(request, id):
     car = CarModel.objects.get(id=id)
     if request.method == 'POST':
-        form = CarForm(request.POST, instance=car)
+        form = CarCreateForm(request.POST, instance=car)
         if form.is_valid():
             form.save()
             return redirect('catalogue')
@@ -55,10 +55,11 @@ def car_edit(request, id):
             }
             return render(request, 'car-edit.html', context)
     else:
-        form = CarForm(instance=car)
+        form = CarCreateForm(instance=car)
         context = {
             'form': form,
-            'profile': ProfileModel.objects.first()
+            'profile': ProfileModel.objects.first(),
+            'id': id,
         }
         return render(request, 'car-edit.html', context)
 
@@ -68,7 +69,7 @@ def car_delete(request, id):
     if request.method == 'POST':
         car.delete()
         return redirect('catalogue')
-    form = CarForm(instance=car)
+    form = CarDeleteForm(instance=car)
     context = {
         'form': form,
         'profile': ProfileModel.objects.first()

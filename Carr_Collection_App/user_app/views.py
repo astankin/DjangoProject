@@ -24,7 +24,10 @@ def profile_details(request):
     profile = ProfileModel.objects.first()
     all_cars = CarModel.objects.all()
     total_sum = sum(car.price for car in all_cars)
-    context = {'profile': profile, 'total_sum': total_sum}
+    context = {
+        'profile': profile,
+        'total_sum': total_sum
+    }
 
     return render(request, template_name='profile-details.html', context=context)
 

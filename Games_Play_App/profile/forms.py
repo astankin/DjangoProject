@@ -9,3 +9,10 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = ProfileModel
         fields = ['email', 'age', 'password']
+
+
+class ProfileEditForm(forms.ModelForm):
+
+    class Meta:
+        model = ProfileModel
+        fields = '__all__'
