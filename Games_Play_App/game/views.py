@@ -7,7 +7,6 @@ from profile.models import ProfileModel
 
 # Create your views here.
 
-
 def create_game(request):
     if request.method == 'POST':
         form = GameForm(request.POST)
