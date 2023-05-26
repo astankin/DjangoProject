@@ -24,7 +24,7 @@ def profile_details(request):
     profile = ProfileModel.objects.first()
     games = GameModel.objects.all()
     games_count = len(games)
-    average_rating = sum([game.rating for game in games]) / games_count
+    average_rating = sum([game.rating for game in games]) / games_count if games_count > 0 else 0
     context = {
         'profile': profile,
         'games_count': games_count,
