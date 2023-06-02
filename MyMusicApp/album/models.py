@@ -37,3 +37,6 @@ class AlbumModel(models.Model):
     price = models.FloatField(
         validators=[MinValueValidator(0)]
     )
+
+    class Meta:
+        ordering = ('id',)
