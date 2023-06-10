@@ -10,3 +10,12 @@ class ProfileForm(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput(),
         }
+
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = ProfileModel
+        fields = '__all__'
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
