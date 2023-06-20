@@ -23,10 +23,11 @@ class SignUpView(views.CreateView):
     template_name = 'auth/sign-up.html'
     form_class = SignUpForm
 
-    success_url = reverse_lazy('sign-up')
+    success_url = reverse_lazy('index')
 
 
 # As8304034508@
 
 class SignInView(auth_views.LoginView):
     template_name = 'auth/sign-in.html'
+    success_url = reverse_lazy('index')
