@@ -7,7 +7,6 @@ urlpatterns = [
     path('catalogue/', views.catalogue, name='catalogue'),
     path('car/', include([
         path('create/', views.car_create, name='car-create'),
-        path('create/', views.car_create, name='car-create'),
         path('<int:id>/details/', views.car_details, name='car-details'),
         path('<int:id>/edit/', views.car_edit, name='car-edit'),
         path('<int:id>/delete/', views.car_delete, name='car-delete'),
