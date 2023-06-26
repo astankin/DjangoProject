@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+<h3>{{ owner }}'s Cars List</h3>
+
+        <ul>
+            {% for car in cars %}
+            <a href="{% url 'details-car'  car.pk %}">
+                <li>{{ car.model }}</li>
+            </a>
+             {% endfor %}
+        </ul>
+
+</div>
+</body>
+</html>
