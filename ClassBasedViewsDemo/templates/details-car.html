@@ -8,6 +8,7 @@
 <h2>{{ car.model }}</h2>
 <p>{{ car.type }}</p>
 <p>{{ car.year_of_manufacturing }}</p>
+<a href="{% url 'update-car' car.pk %}">Edit Car</a>
 <a href="{% url 'delete-car' car.pk %}">Delete</a>
 </body>
 </html>

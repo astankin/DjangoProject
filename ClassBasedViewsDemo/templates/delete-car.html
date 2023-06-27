@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<form action="#" method="post">
+<form action="{% url 'delete-car' object.pk %}" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    <h1>Are you sure you want to delete {{ object.model }}</h1>
     <button type="submit">Delete</button>
 </form>
 </body>
