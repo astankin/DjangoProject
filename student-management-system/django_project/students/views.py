@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from .models import Student
@@ -15,6 +15,11 @@ def index(request):
 def view_student(request, id):
     student = Student.objects.get(pk=id)
     return HttpResponseRedirect(reverse('index'))
+
+def student_list(request):
+    return render(request, 'students/student_list.html', {
+        'students': Student.objects.all()
+    })
 
 
 def add(request):
@@ -49,20 +54,17 @@ def add(request):
 
 
 def edit(request, id):
+    student = Student.objects.get(pk=id)
     if request.method == 'POST':
-        student = Student.objects.get(pk=id)
         form = StudentForm(request.POST, instance=student)
         if form.is_valid():
             form.save()
-            return render(request, 'students/edit.html', {
-                'form': form,
-                'success': True
-            })
+            return HttpResponse(status=204, headers={'HX-Trigger': 'studentEventChanged'})
     else:
-        student = Student.objects.get(pk=id)
         form = StudentForm(instance=student)
     return render(request, 'students/edit.html', {
-        'form': form
+        'form': form,
+        'student': student
     })
 
 
